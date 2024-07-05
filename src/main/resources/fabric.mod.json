@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "heads-to-inventory",
+  "version": "${version}",
+  "name": "Heads to Inventory",
+  "description": "A simple mod that will insert a players head to their inventory on death. This is intended to work with a grave mod and add the player's head to the player's grave whenever a player dies.",
+  "authors": ["jakealves"],
+  "contact": {
+    "homepage": "https://jakealves.com/",
+    "sources": "https://github.com/jakealves/heads-to-inventory"
+  },
+  "license": "CC0-1.0",
+  "icon": "assets/heads-to-inventory/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.jakealves.HeadsToInventory"]
+  },
+  "mixins": ["heads-to-inventory.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.15.11",
+    "minecraft": "~1.20.4",
+    "java": ">=17",
+    "fabric-api": "*"
+  },
+  "suggests": {}
+}

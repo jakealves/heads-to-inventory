@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "package": "com.jakealves.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": ["LivingEntityMixin"],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
