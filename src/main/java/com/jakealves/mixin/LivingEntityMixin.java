@@ -8,6 +8,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.World;
 
@@ -30,12 +31,14 @@ public abstract class LivingEntityMixin extends Entity {
 			HeadsToInventory.LOGGER.info(String.format("registered that player %s has died", playerName));
 
 			ItemStack skull = Items.PLAYER_HEAD.getDefaultStack();
+			NbtCompound compound = HeadsToInventory.nbtFromProfile(player.getGameProfile());
+			skull.setNbt(compound);
 
 			skull.setCustomName(player.getStyledDisplayName());
 
 			if (source.getAttacker() instanceof ServerPlayerEntity killer) {
 				String killerName = killer.getName().getString();
-				// TODO set LORE on skull to mention killer name
+				skull.setNbt(HeadsToInventory.addLore(compound, killer));
 				HeadsToInventory.LOGGER
 						.info(String.format("player %s was killed by %s", playerName, killerName));
 			}
